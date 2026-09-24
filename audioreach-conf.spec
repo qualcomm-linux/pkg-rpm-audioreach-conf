@@ -1,5 +1,5 @@
 %global debug_package %{nil}
-%global release_num 1
+%global release_num 2
 
 Name:           audioreach-conf
 Version:        1.1.0
@@ -40,6 +40,7 @@ autoreconf -fi
 
 %install
 %make_install
+install -m 0644 qcom/qli/qcm6490/card-defs.xml %{buildroot}%{_sysconfdir}/card-defs.xml
 
 find %{buildroot} -name '*.la' -delete
 
@@ -114,5 +115,8 @@ find %{buildroot} -name '*.la' -delete
 %{_sysconfdir}/card-defs.xml
 
 %changelog
-* Thu Aug 14 2026 Qualcomm Linux <quic_linux@quicinc.com> - 1.1.0-1
+* Tue Sep 16 2026 Chiluka Rohith <rchiluka@qti.qualcomm.com> - 1.1.0-2
+- Explicitly install QCM6490 card-defs.xml to ensure correct board config
+
+* Thu Aug 14 2026 Chiluka Rohith <rchiluka@qti.qualcomm.com> - 1.1.0-1
 - Initial RPM packaging of audioreach-conf version 1.1.0
