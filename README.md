@@ -22,18 +22,6 @@ qcm6490, qcs615, qcs8275, qcs8300, qcs9075, qcs9100, sm8750,
 GLYMUR, Kaanapali, MAHUA, X1E80100
 ```
 
-## CI Workflows
-
-| Workflow | Trigger | Purpose |
-|---|---|---|
-| [`build-on-pr.yml`](.github/workflows/build-on-pr.yml) | Pull request | Build the RPM(s) so reviewers confirm the package still builds. Read-only — never publishes. |
-| [`pkg-release.yml`](.github/workflows/pkg-release.yml) | Manual (`workflow_dispatch`) | Build **and** publish the RPM(s) to Artifactory, behind an approval gate. |
-
-The GitHub Actions workflows use the shared
-[`qcom-rpm-utils`](https://github.com/qualcomm-linux/qcom-rpm-utils) build
-environment and run `rpmbuild` inside the prebuilt `rpm-builder` container
-image for the runner's host architecture.
-
 ---
 
 ## Repository Layout
