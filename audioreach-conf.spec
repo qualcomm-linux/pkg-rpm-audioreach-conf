@@ -1,5 +1,5 @@
 %global debug_package %{nil}
-%global release_num 2
+%global release_num 3
 
 Name:           audioreach-conf
 Version:        1.1.0
@@ -8,6 +8,8 @@ Summary:        AudioReach configuration files
 License:        BSD-3-Clause
 URL:            https://github.com/AudioReach/audioreach-conf
 Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        acdb_cal.acdb
+Source2:        workspaceFileXml.qwsp
 
 ExclusiveArch:  aarch64
 
@@ -43,6 +45,11 @@ autoreconf -fi
 install -m 0644 qcom/qli/qcm6490/card-defs.xml %{buildroot}%{_sysconfdir}/card-defs.xml
 
 find %{buildroot} -name '*.la' -delete
+
+install -m 0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/acdbdata/QCS6490_RB3Gen2/acdb_cal.acdb
+install -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/acdbdata/QCS6490_RB3Gen2/workspaceFileXml.qwsp
+install -m 0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/acdbdata/QCM6490_IDP/acdb_cal.acdb
+install -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/acdbdata/QCM6490_IDP/workspaceFileXml.qwsp
 
 %files
 %license LICENSE
@@ -115,6 +122,9 @@ find %{buildroot} -name '*.la' -delete
 %{_sysconfdir}/card-defs.xml
 
 %changelog
+* Mon Oct 05 2026 Chiluka Rohith <rchiluka@qti.qualcomm.com> - 1.1.0-3
+- qcm6490: update acdb for audio record and playback
+
 * Tue Sep 16 2026 Chiluka Rohith <rchiluka@qti.qualcomm.com> - 1.1.0-2
 - Explicitly install QCM6490 card-defs.xml to ensure correct board config
 
