@@ -1,8 +1,8 @@
 %global debug_package %{nil}
-%global release_num 3
+%global release_num 1
 
 Name:           audioreach-conf
-Version:        1.1.0
+Version:        1.1.3
 Release:        %{release_num}%{?dist}
 Summary:        AudioReach configuration files
 License:        BSD-3-Clause
@@ -118,10 +118,30 @@ install -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/acdbdata/QCM6490_IDP/works
 %{_sysconfdir}/acdbdata/X1E80100/acdb_cal.acdb
 %{_sysconfdir}/acdbdata/X1E80100/workspaceFileXml.qwsp
 
+# ---- NORD_RIDE_SX ----
+%dir %{_sysconfdir}/acdbdata/NORD_RIDE_SX
+%{_sysconfdir}/acdbdata/NORD_RIDE_SX/acdb_cal.acdb
+%{_sysconfdir}/acdbdata/NORD_RIDE_SX/workspaceFileXml.qwsp
+
+# ---- shikra CQS ----
+%dir %{_sysconfdir}/acdbdata/shikra_cqs_evk
+%{_sysconfdir}/acdbdata/shikra_cqs_evk/acdb_cal.acdb
+%{_sysconfdir}/acdbdata/shikra_cqs_evk/workspaceFileXml.qwsp
+
+# ---- shikra IQS ----
+%dir %{_sysconfdir}/acdbdata/shikra_iqs_evk
+%{_sysconfdir}/acdbdata/shikra_iqs_evk/acdb_cal.acdb
+%{_sysconfdir}/acdbdata/shikra_iqs_evk/workspaceFileXml.qwsp
+
 # card-defs.xml is installed to $(sysconfdir) — last board's install wins
 %{_sysconfdir}/card-defs.xml
 
 %changelog
+* Tue Oct 27 2026 Febin Francis <ffrancis@qti.qualcomm.com> - 1.1.3-1
+- Update to 1.1.3
+- Add NORD_RIDE_SX and shikra CQS/IQS ACDB data
+- Add Fluence_NN and SVA usecase graphs
+
 * Mon Oct 05 2026 Chiluka Rohith <rchiluka@qti.qualcomm.com> - 1.1.0-3
 - qcm6490: update acdb for audio record and playback
 
